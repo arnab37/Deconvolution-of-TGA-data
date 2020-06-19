@@ -1,0 +1,20 @@
+The code deconvolutes DTG peaks by using a global search method.
+
+The DTG contains two peaks and a non-zero peak tail. For the deconvolution, distributaed activation energy model is used.
+This model assumes that there are three different kinetics going on for the 1st, 2nd peak and non-zero-peak tail.
+It also assumes that each kinetics can be approximated by an average pre-factor value and the activation energy
+for that kinetics is normally distributed.
+
+In order to decovolute the peak and get the prefactors and activation energy distibutions, deconvolution of 
+the first peak is necessary. For that, the temperature range has tobe chosen in such a way that only the major portion of the
+first peak lies in that range. Once, we obtain the parameters for the first peak, we need to put that in the 
+deconvolution of the second peak. Here we will choose the temperture range of 1st and 2nd peak. Once, we obtain 
+the parameters for the 2nd peak, we will put these parameters along with the 1st peak parameters for deconvolution
+of peak tail.
+
+The matrix BBBB contains all the parameters for the optimization. There are 12 parameters in total for the optimization of 3 
+lumped reactions. They are stoichiometric parameter, logarithm 10 of prefactor, average of activation energy
+distribution, andstandard deviation of activation energy distribution.
+
+The input txt file has 5 columns, they are time, temperature, % wt, DTG and DSC data. Only the temperature and DTG data 
+are sufficient to run this code.
